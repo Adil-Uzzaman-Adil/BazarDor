@@ -5,12 +5,17 @@
   --bg: #fefce8;
 }
 
-body {
-  background: var(--bg);
-  font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 120px;
 }
 
-/* Marquee animation */
+body {
+  background: var(--bg);
+  font-family: var(--font-hind), "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+}
+
+/* Marquee animation for price ticker */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }

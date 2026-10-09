@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { signIn } from "@/lib/auth-client";
 import { useRouter, useSearchParams } from "next/navigation";
 import toast from "react-hot-toast";
@@ -13,6 +13,13 @@ export default function SignInForm() {
   const router = useRouter();
   const params = useSearchParams();
   const redirect = params.get("redirect") || "/";
+
+  // 🟢 Show toast when redirected from protected route
+  useEffect(() => {
+    if (params.get("redirect")) {
+      toast.error("এই পেজ দেখতে সাইন ইন করুন");
+    }
+  }, [params]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -30,7 +37,7 @@ export default function SignInForm() {
   };
 
   return (
-    <div className="max-w-md mx-auto card bg-white shadow-lg p-6 md:p-8 mt-10">
+    <div className="max-w-md w-full mx-auto card bg-white shadow-lg p-6 md:p-8">
       <h2 className="text-2xl font-bold text-center mb-6 text-green-700">সাইন ইন</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input
