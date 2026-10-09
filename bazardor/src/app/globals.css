@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+:root {
+  --bg: #fefce8;
+}
+
+body {
+  background: var(--bg);
+  font-family: "Hind Siliguri", "Noto Sans Bengali", system-ui, sans-serif;
+}
+
+/* Marquee animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: inline-flex;
+  animation: marquee 30s linear infinite;
+  white-space: nowrap;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
